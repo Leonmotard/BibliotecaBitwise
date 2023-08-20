@@ -10,6 +10,6 @@ namespace BibliotecaAPIBitwise.DTO
         public DateTime FechaLanzamiento { get; set; }
         public string NombreAutor { get; set; }
         public string NombreGenero { get; set; }
-        public HashSet<Comentario> Comentarios { get; set; } = new HashSet<Comentario>();
+        public HashSet<ComentarioListaDTO> Comentarios { get; set; } = new HashSet<ComentarioListaDTO>();
     }
 }

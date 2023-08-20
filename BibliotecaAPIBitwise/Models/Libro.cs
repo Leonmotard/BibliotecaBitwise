@@ -1,4 +1,6 @@
-﻿namespace BibliotecaAPIBitwise.Models
+﻿using System.Text.Json.Serialization;
+
+namespace BibliotecaAPIBitwise.Models
 {
     public class Libro
     {
@@ -10,6 +12,7 @@
         public Autor Autor { get; set; } = null!;
         public int GeneroId { get; set; }
         public Genero Genero { get; set; } = null!;
+       // [JsonIgnore]
         public HashSet<Comentario> Comentarios { get; set; } = new HashSet<Comentario>();
     }
 }
