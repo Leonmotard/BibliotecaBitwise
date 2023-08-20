@@ -15,6 +15,8 @@ namespace BibliotecaAPIBitwise.Utilidades
             CreateMap<AutorCreacionDTO, Autor>()
                 .ForMember(d => d.FechaNacimiento,
                 opt => opt.MapFrom(o => DateTime.Parse(o.FechaNacimiento)));
+
+            CreateMap<Comentario, ComentarioDTO>().ReverseMap();
         }
     }
 }
