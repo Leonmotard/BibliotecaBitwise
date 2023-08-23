@@ -28,7 +28,7 @@ namespace BibliotecaAPIBitwise.Controllers
 
             if (!respuesta)
             {
-                return BadRequest()
+                return BadRequest();
             }
 
             var dto = _mapper.Map<ComentarioDTO>(comentario);

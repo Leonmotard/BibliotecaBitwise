@@ -30,8 +30,11 @@ namespace BibliotecaAPIBitwise.Utilidades
                 .ForMember(d => d.Autor, o => o.Ignore())
                 .ForMember(d => d.Genero, o => o.Ignore());
 
-            CreateMap<Genero, GeneroDTO>();
+            CreateMap<Genero, GeneroDTO>().ReverseMap();
             CreateMap<GeneroCreacionDTO, Genero>();
+
+            CreateMap<Usuario, UsuarioDTO>().ReverseMap(); 
+
 
             
 

@@ -55,6 +55,38 @@ namespace BibliotecaAPIBitwise.Controllers
             var libroDTO = _mapper.Map<LibroDTO>(libro);
             return CreatedAtAction(nameof(Obtener), new {id = libro.Id}, libroDTO);
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Actualizar(int id, LibroCreacionDTO libroCreacionDTO)
+        {
+            var libroBd = await _repository.Obtener(id);
+            if (libroBd == null)
+                return NotFound();
+
+            _mapper.Map(libroCreacionDTO, libroBd);
+            var resultado = await _repository.Actualizar(libroBd);
+            if (resultado)
+                return NoContent();
+
+            return BadRequest();
+        }
+
+        [HttpDelete("{id}")]
+
+        public async Task<ActionResult> Eliminar(int id)
+        {
+            var libroBd = await _repository.Obtener(id);
+            if (libroBd == null)
+                return NotFound();
+
+            var resultado = await _repository.Eliminar(id);
+
+            if (resultado)
+                return NoContent();
+
+            return BadRequest();
+
+        }
     }
 
 }

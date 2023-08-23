@@ -28,12 +28,15 @@ namespace BibliotecaAPIBitwise.Controllers
             return Ok(autoresDTO);
         }
 
-        [HttpGet("soloAutores")]
-        public async Task<ActionResult<IEnumerable<Autor>>> obtener()
+        [HttpGet("{id}", Name = "GetAutor")]
+        public async Task<ActionResult<AutorDTO>> ObtenerPorid(int id)
         {
-            var autores = await _repository.ObtenerTodos();
+            var autor = await _repository.Obtener(id);
+            if (autor == null)
+                return NotFound();
 
-            return Ok(autores);
+            var autorDto = _mapper.Map<AutorDTO>(autor);
+            return Ok(autorDto);
         }
 
         [HttpPost]
@@ -46,9 +49,42 @@ namespace BibliotecaAPIBitwise.Controllers
             {
                 return NotFound();
             }
-            var dto = _mapper.Map<AutorDTO>(autor);
+            var autorDto = _mapper.Map<AutorDTO>(autor);
 
-            return Ok(dto);
+            return new CreatedAtRouteResult("GetAutor", new { id = autor.Id }, autorDto);
+           ;
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Actualizar(int id, AutorCreacionDTO autorCreacionDTO)
+        {
+            var autorBd = await _repository.Obtener(id);
+            if (autorBd == null)
+                return NotFound();
+
+            _mapper.Map(autorCreacionDTO, autorBd);
+            var resultado = await _repository.Actualizar(autorBd);
+            if (resultado)
+                return NoContent();
+
+            return BadRequest();
+        }
+
+        [HttpDelete("{id}")]
+
+        public async Task<ActionResult>Eliminar(int id)
+        {
+            var autorBd = await _repository.Obtener(id);
+            if (autorBd == null)
+                return NotFound();
+
+            var resultado = await _repository.Eliminar(id);
+
+            if (resultado)
+              return NoContent();
+
+            return BadRequest();
+
         }
 
 

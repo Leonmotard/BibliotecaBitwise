@@ -25,6 +25,8 @@ builder.Services.AddControllers().AddJsonOptions(opt =>
 
 builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<ILibroRepository, LibroRepository>();
+builder.Services.AddScoped<IGeneroRepository, GeneroRepository>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddAutoMapper(typeof(AutomapperProfile));
 
 var app = builder.Build();
