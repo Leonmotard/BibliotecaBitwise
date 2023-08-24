@@ -2,6 +2,7 @@
 using BibliotecaAPIBitwise.DAL.Interfaces;
 using BibliotecaAPIBitwise.DTO;
 using BibliotecaAPIBitwise.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Text;
 using XSystem.Security.Cryptography;
 
@@ -15,9 +16,12 @@ namespace BibliotecaAPIBitwise.DAL.Implementaciones
             _context = context;
         }
 
-        public Task<bool> IsUniqueUser(string usuario)
+        public async Task<bool> IsUniqueUser(string usuario)
         {
-            throw new NotImplementedException();
+            var usuarioDb = await _context.Usuarios.FirstOrDefaultAsync(u => u.NombreUsuario == usuario);
+            if (usuarioDb == null)
+                return true;
+            return false;
         }
 
         public Task<UsuarioRespuestaLoginDTO> Login(UsuarioLoginDTO usuarioLoginDTO)
