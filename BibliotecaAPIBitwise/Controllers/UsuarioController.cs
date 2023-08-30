@@ -59,5 +59,23 @@ namespace BibliotecaAPIBitwise.Controllers
             return Ok(_respuesta);
 
         }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> login([FromBody] UsuarioLoginDTO usuarioLoginDTO)
+        {
+            var respuestaLogin = await _usuarioRepository.Login(usuarioLoginDTO);
+
+            if (respuestaLogin.Usuario == null || string.IsNullOrEmpty(respuestaLogin.Token) ) 
+            {
+                _respuesta.StatusCode = HttpStatusCode.BadRequest;
+                _respuesta.IsSuccess = false;
+                _respuesta.ErrorMenssages.Add("El usuario o la clave ingresadas son incorrectos.");
+                return BadRequest(_respuesta);            
+            }
+            _respuesta.StatusCode=HttpStatusCode.OK;
+            _respuesta.IsSuccess = true;
+            _respuesta.Result = respuestaLogin;
+            return Ok(_respuesta);
+        }
     }
 }

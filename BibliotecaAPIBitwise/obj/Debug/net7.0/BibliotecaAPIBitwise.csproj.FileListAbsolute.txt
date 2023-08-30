@@ -155,3 +155,6 @@ C:\Users\lean_\OneDrive\Documentos\TSTI\2023\Bitwise\Proyecto\Clase4\BibliotecaB
 C:\Users\lean_\OneDrive\Documentos\TSTI\2023\Bitwise\Proyecto\Clase4\BibliotecaBitwise\BibliotecaAPIBitwise\obj\Debug\net7.0\BibliotecaAPIBitwise.genruntimeconfig.cache
 C:\Users\lean_\OneDrive\Documentos\TSTI\2023\Bitwise\Proyecto\Clase4\BibliotecaBitwise\BibliotecaAPIBitwise\obj\Debug\net7.0\ref\BibliotecaAPIBitwise.dll
 C:\Users\lean_\OneDrive\Documentos\TSTI\2023\Bitwise\Proyecto\Clase4\BibliotecaBitwise\BibliotecaAPIBitwise\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\lean_\OneDrive\Documentos\TSTI\2023\Bitwise\Proyecto\Clase4\BibliotecaBitwise\BibliotecaAPIBitwise\bin\Debug\net7.0\Microsoft.Practices.ServiceLocation.dll
+C:\Users\lean_\OneDrive\Documentos\TSTI\2023\Bitwise\Proyecto\Clase4\BibliotecaBitwise\BibliotecaAPIBitwise\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\lean_\OneDrive\Documentos\TSTI\2023\Bitwise\Proyecto\Clase4\BibliotecaBitwise\BibliotecaAPIBitwise\bin\Debug\net7.0\XAct.Core.PCL.dll

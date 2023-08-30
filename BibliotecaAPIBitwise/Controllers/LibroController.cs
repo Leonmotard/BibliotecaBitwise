@@ -9,6 +9,7 @@ namespace BibliotecaAPIBitwise.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ResponseCache (CacheProfileName = "Por defecto")]
     public class LibroController : ControllerBase
     {
         private readonly IGenericRepository<Libro> _repository;
@@ -20,6 +21,15 @@ namespace BibliotecaAPIBitwise.Controllers
             _repository = repository;
             _libroRepository = libroRepository;
             _mapper = mapper;
+        }
+
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<LibroDTO>>> ObtenerTodos()
+        {
+            var libros = await _repository.ObtenerTodos();
+            var librosDto = _mapper.Map<IEnumerable<LibroDTO>>(libros);
+            return Ok(librosDto);
         }
 
         [HttpGet("{id}")]
@@ -34,7 +44,9 @@ namespace BibliotecaAPIBitwise.Controllers
             return Ok(libroDTO);
         }
 
+       
         [HttpGet("dataRelacionada/{id}")]
+        [ResponseCache(CacheProfileName = "Mas rapido")]
         public async Task<ActionResult<LibroDTO>> ObtenerRelacionada(int id)
         {
             var libro = await _libroRepository.ObtenerPorIdConRelacion(id);

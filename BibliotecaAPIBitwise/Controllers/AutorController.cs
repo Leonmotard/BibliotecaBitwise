@@ -2,6 +2,7 @@
 using BibliotecaAPIBitwise.DAL.Interfaces;
 using BibliotecaAPIBitwise.DTO;
 using BibliotecaAPIBitwise.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,6 +29,7 @@ namespace BibliotecaAPIBitwise.Controllers
             return Ok(autoresDTO);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet("{id}", Name = "GetAutor")]
         public async Task<ActionResult<AutorDTO>> ObtenerPorid(int id)
         {
