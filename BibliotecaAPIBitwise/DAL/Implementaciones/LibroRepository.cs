@@ -17,7 +17,10 @@ namespace BibliotecaAPIBitwise.DAL.Implementaciones
         {
             var query = await _context.Libros
                 .Include(a => a.Autor)
-                .Include(g => g.Genero).FirstOrDefaultAsync(l=> l.Id == id);
+                .Include(g => g.Genero)
+                .Include(l => l.Comentarios)
+                .FirstOrDefaultAsync(l => l.Id == id);
+                
             return query;
         }
     }
