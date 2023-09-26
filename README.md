@@ -2,7 +2,7 @@
 
 ## Description
 
-Se trata de una API Rest simple que relaciona 3 entidades, Categoria, Marca y Producto. 
+Se trata de una API Rest realizada durante el cursado de una capacitación brindada por Bitwise S.A. 
 Cada entidad cuenta con sus respectivos endpoints donde se cuenta con un CRUD (create, read, update, delete) básico.
 También cuenta con los recursos necesarios para resgistrar usuarios y administradores para utilizar los distintos recursos 
 disponibles en la aplicación.
